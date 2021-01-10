@@ -1,0 +1,33 @@
+.section-about {
+  &__border {
+    padding: 10px 15% 40px 15%;
+  }
+  &__container {
+    border-top: 1px solid black;
+    text-align: center;
+    padding-top: 10px;
+  }
+  padding: 15rem 0 50rem;
+  background-color: rgb(241, 235, 235);
+  margin-top: -15vh;
+
+  &__heading-primary {
+    color: rgb(236, 161, 126);
+  }
+  &__text-content {
+    color: rgb(94, 122, 94);
+    margin-bottom: 20px;
+  }
+}
+
+.footer {
+  &__container {
+    border-top: 1px solid black;
+    text-align: center;
+    padding-top: 10px;
+  }
+
+  padding: 10px 15% 40px 15%;
+  margin-top: -10px;
+  background-color: rgb(241, 235, 235);
+}

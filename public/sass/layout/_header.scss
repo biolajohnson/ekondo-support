@@ -1,0 +1,26 @@
+.header {
+  height: 95vh;
+  position: relative;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(0, 0, 0, 0.507),
+      rgba(0, 0, 0, 0.699)
+    ),
+    url(../../img/background.jpg);
+  background-size: cover;
+  background-position: top;
+  clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
+
+  &__logo {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &-image {
+      display: inline-block;
+      animation: moveInLeft 2s;
+      height: 200px;
+    }
+  }
+}
