@@ -20,7 +20,13 @@
     &-image {
       display: inline-block;
       animation: moveInLeft 2s;
-      height: 200px;
+      height: 20rem;
+      @include respond(phone) {
+        height: 10rem;
+      }
     }
+  }
+  @include respond(phone) {
+    padding: 0;
   }
 }

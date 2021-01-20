@@ -8,6 +8,10 @@ $horizontal-gutter: 15px;
   &:not(:last-child) {
     margin-bottom: $vertical-gutter;
   }
+  @include respond(tab-port) {
+    max-width: 50rem;
+    padding: 0 3rem;
+  }
   @include clearfix;
 
   [class^="col-"] {
@@ -15,6 +19,9 @@ $horizontal-gutter: 15px;
 
     &:not(:last-child) {
       margin-right: $horizontal-gutter;
+    }
+    @include respond(tab-port) {
+      width: 100% !important;
     }
   }
   .col-1-of-2 {

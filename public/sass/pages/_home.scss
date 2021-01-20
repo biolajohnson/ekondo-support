@@ -1,7 +1,13 @@
 .section-about {
+  position: relative;
   &__border {
-    padding: 10px 15% 40px 15%;
+    padding: 1rem 15% 4rem 15%;
+
+    @include respond(phone) {
+      padding: 0.3rem 5% 1rem 5%;
+    }
   }
+
   &__container {
     border-top: 1px solid black;
     text-align: center;
@@ -13,10 +19,17 @@
 
   &__heading-primary {
     color: rgb(236, 161, 126);
+    @include respond(phone) {
+      font-size: 1.9rem;
+    }
   }
   &__text-content {
     color: rgb(94, 122, 94);
     margin-bottom: 20px;
+
+    @include respond(phone) {
+      font-size: 1rem;
+    }
   }
 }
 
@@ -24,10 +37,18 @@
   &__container {
     border-top: 1px solid black;
     text-align: center;
-    padding-top: 10px;
+    padding-top: 1rem;
+
+    @include respond(phone) {
+      padding-top: 1rem;
+      font-size: 1rem;
+    }
   }
 
-  padding: 10px 15% 40px 15%;
+  @include respond(phone) {
+    padding: 7rem 5% 1rem 5%;
+  }
+  padding: 5rem 15% 4rem 15%;
   margin-top: -10px;
   background-color: rgb(241, 235, 235);
 }

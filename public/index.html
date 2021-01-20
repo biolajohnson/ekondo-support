@@ -32,25 +32,37 @@
           <h1 class="section-about__heading-primary">Need some help?</h1>
         </div>
        </div> 
+
+       <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <h3>Feedback</h3>
+          <p id="feedback">Some text in the Modal..</p>
+        </div>
+      
+      </div>
         
         <div class="row">
           <div class="col-1-of-2">
             <p class="section-about__text-content">
-              Tell us how your plant is doing so far! We're excited to introduce a support system where by youd have access to us for any complaints regarding the growth of the precious one. Lets know whats up!
+              Tell us how your plant is doing so far! We're excited to introduce a support system where by you can lay down any complaint regarding the growth of the precious one. Lets know whats up!
             </p>
             <p class="section-about__text-content">
               We will send recommadations and tips via email.
                Enjoy being a plant parent 🙂
             </p>
-            <form class="form" action="#">
+            <form autocomplete="off"  class="form" action="#">
               <div class="form__group">
                 <input
+                  autofocus
                   placeholder="Name"
                   id="name"
                   type="text"
                   class="form-input"
                 />
               </div>
+             
               <div class="form__group">
                 <input
                   placeholder="Email address"
@@ -60,8 +72,18 @@
                 />
               </div>
               <div class="form__group">
+                <div class="form-checkboxes">
+                  <label class="form-checkboxes-label"><input type="checkbox" id="dry_soil">Soil is dried out?</label>
+                  
+                  <label class="form-checkboxes-label"><input type="checkbox" id="yellow_leaves">Plant leaves turning brown ir yellow?</label>
+                  
+                  <label class="form-checkboxes-label"><input type="checkbox" id="holes_in_leaves">Holes in the leaves?</label>
+                  
+                </div>
+              </div>
+              <div class="form__group">
                 <textarea
-                  placeholder="What's up..."
+                  placeholder="Tell us specifics if the checkbox options are not enough, really we want to know"
                   id="text"
                   type="compliants"
                   class="form-text"
@@ -75,12 +97,12 @@
           <div class="col-1-of-2">
             <div class="composition">
               <img
-                src="img/side-bar-2.jpg"
+                src="img/spray.jpg"
                 alt="photo1"
                 class="composition__photo composition__photo-1"
               />
               <img
-                src="img/side-bar.jpg"
+                src="img/canopy.jpg"
                 alt="photo2"
                 class="composition__photo composition__photo-2"
               />
@@ -97,7 +119,7 @@
         </div>
       </footer>
     </main>
-
+   
     <!--
 <section class="grid-test">
       <div class="row">

@@ -36,12 +36,24 @@
   padding: 0;
   box-sizing: inherit; }
 
-body {
-  padding: 30px;
-  box-sizing: border-box; }
-
 html {
   font-size: 62.5%; }
+  @media only screen and (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media only screen and (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media only screen and (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
+
+body {
+  box-sizing: border-box;
+  padding: 3rem; }
+  @media only screen and (max-width: 56.25em) {
+    body {
+      padding: 0; } }
 
 body {
   font-family: "Montserrat", sans-serif;
@@ -59,25 +71,43 @@ body {
   color: #bbbaba; }
   .heading-text-box__heading-primary {
     margin-bottom: 60px; }
+    @media only screen and (max-width: 37.5em) {
+      .heading-text-box__heading-primary {
+        letter-spacing: 0.3rem;
+        font-family: 5rem;
+        font-size: 1rem; } }
   .heading-text-box__heading-sub {
     display: block;
-    font-size: 20px;
+    font-size: 2rem;
     animation: moveInRight 2s; }
+    @media only screen and (max-width: 37.5em) {
+      .heading-text-box__heading-sub {
+        letter-spacing: 0.5rem;
+        font-size: 1rem; } }
 
 .rd {
-  font-size: 13px;
+  font-size: 1.3rem;
   font-weight: 200; }
+  @media only screen and (max-width: 37.5em) {
+    .rd {
+      font-size: 1rem; } }
 
 .copyrights {
-  font-size: 16px;
+  font-size: 1.6rem;
   font-weight: 400;
   color: #e99e60; }
+  @media only screen and (max-width: 37.5em) {
+    .copyrights {
+      font-size: 1rem; } }
 
 .u-center-text {
   text-align: center; }
 
 .u-margin-bottom-big {
   margin-bottom: 60px; }
+  @media only screen and (max-width: 56.25em) {
+    .u-margin-bottom-big {
+      margin-bottom: 3rem !important; } }
 
 .header {
   height: 95vh;
@@ -94,7 +124,13 @@ body {
     .header__logo-image {
       display: inline-block;
       animation: moveInLeft 2s;
-      height: 200px; }
+      height: 20rem; }
+      @media only screen and (max-width: 37.5em) {
+        .header__logo-image {
+          height: 10rem; } }
+  @media only screen and (max-width: 37.5em) {
+    .header {
+      padding: 0; } }
 
 .row {
   max-width: 1140px;
@@ -102,14 +138,21 @@ body {
   margin: 0 auto; }
   .row:not(:last-child) {
     margin-bottom: 20px; }
+  @media only screen and (max-width: 56.25em) {
+    .row {
+      max-width: 50rem;
+      padding: 0 3rem; } }
   .row::after {
-    display: table;
     content: "";
+    display: table;
     clear: both; }
   .row [class^="col-"] {
     float: left; }
     .row [class^="col-"]:not(:last-child) {
       margin-right: 15px; }
+    @media only screen and (max-width: 56.25em) {
+      .row [class^="col-"] {
+        width: 100% !important; } }
   .row .col-1-of-2 {
     width: calc((100% - 15px) / 2); }
   .row .col-1-of-3 {
@@ -149,57 +192,180 @@ body {
 
 .composition {
   position: relative; }
+  @media only screen and (max-width: 37.5em) {
+    .composition {
+      visibility: hidden;
+      opacity: 0; } }
   .composition__photo {
+    transition: all 0.4s;
     position: absolute;
     width: 50%; }
     .composition__photo-1 {
-      top: -10px;
-      left: 40px; }
+      top: -1rem;
+      left: 4rem; }
+      @media only screen and (max-width: 56.25em) {
+        .composition__photo-1 {
+          top: 0;
+          transform: scale(1.2); } }
     .composition__photo-2 {
-      top: 10px;
-      right: 15px; }
+      top: 1rem;
+      right: 1.5rem; }
+      @media only screen and (max-width: 56.25em) {
+        .composition__photo-2 {
+          top: 0;
+          transform: scale(1.2); } }
+    .composition__photo:hover {
+      transform: scale(1.1);
+      z-index: 10000;
+      box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5); }
+    @media only screen and (max-width: 56.25em) {
+      .composition__photo {
+        float: left;
+        position: relative;
+        width: 33.33333333%;
+        box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.2); } }
+  .composition:hover .composition__photo:not(:hover) {
+    transform: scale(0.9); }
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 10000000;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: black;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */ }
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #f1ebeb;
+  margin: 15% auto;
+  /* 15% from the top and centered */
+  padding: 2rem;
+  border: 1px solid #888;
+  width: 30%;
+  /* Could be more or less, depending on screen size */
+  text-align: center; }
+  @media only screen and (max-width: 37.5em) {
+    .modal-content {
+      width: 45%;
+      text-align: center; } }
+  .modal-content h3 {
+    color: #e99e60;
+    font-size: 1.9rem; }
+    @media only screen and (max-width: 37.5em) {
+      .modal-content h3 {
+        font-size: 1.2rem; } }
+  .modal-content p {
+    color: #5e7a5e;
+    font-size: 1.5rem; }
+    @media only screen and (max-width: 37.5em) {
+      .modal-content p {
+        font-size: 1rem; } }
+
+@media only screen and (max-width: 56.25em) {
+  .form {
+    width: 100%; } }
 
 .form-input {
-  padding: 15px;
+  padding: 1.5rem;
   font-family: inherit; }
   .form-input:focus {
     outline: none; }
+  @media only screen and (max-width: 37.5em) {
+    .form-input {
+      padding: 0.5rem;
+      font-size: 1rem; } }
+
+.form-checkboxes {
+  font-family: inherit;
+  font-size: 1.3rem; }
+  .form-checkboxes input {
+    margin-right: 0.5rem; }
+  .form-checkboxes-label {
+    padding: 0.5rem;
+    color: #5e7a5e; }
+    @media only screen and (max-width: 37.5em) {
+      .form-checkboxes-label {
+        font-size: 1rem;
+        display: inline-block; } }
+  @media only screen and (max-width: 37.5em) {
+    .form-checkboxes {
+      padding: 0.5rem;
+      font-size: 0.4rem; } }
 
 .form-text {
-  padding: 10px;
+  padding: 1rem;
   width: 100%;
-  height: 150px;
+  height: 15rem;
   font-family: inherit; }
   .form-text:focus {
     outline: none; }
+  @media only screen and (max-width: 37.5em) {
+    .form-text {
+      padding: 0.5rem;
+      font-size: 1rem; } }
 
 .form__group:not(:last-child) {
-  margin-bottom: 10px; }
+  margin-bottom: 1rem; }
 
 .form-submit {
-  padding: 10px; }
+  padding: 1rem; }
+  @media only screen and (max-width: 37.5em) {
+    .form-submit {
+      padding: 0.5rem;
+      font-size: 1rem; } }
 
 .section-about {
+  position: relative;
   padding: 15rem 0 50rem;
   background-color: #f1ebeb;
   margin-top: -15vh; }
   .section-about__border {
-    padding: 10px 15% 40px 15%; }
+    padding: 1rem 15% 4rem 15%; }
+    @media only screen and (max-width: 37.5em) {
+      .section-about__border {
+        padding: 0.3rem 5% 1rem 5%; } }
   .section-about__container {
     border-top: 1px solid black;
     text-align: center;
     padding-top: 10px; }
   .section-about__heading-primary {
     color: #eca17e; }
+    @media only screen and (max-width: 37.5em) {
+      .section-about__heading-primary {
+        font-size: 1.9rem; } }
   .section-about__text-content {
     color: #5e7a5e;
     margin-bottom: 20px; }
+    @media only screen and (max-width: 37.5em) {
+      .section-about__text-content {
+        font-size: 1rem; } }
 
 .footer {
-  padding: 10px 15% 40px 15%;
+  padding: 5rem 15% 4rem 15%;
   margin-top: -10px;
   background-color: #f1ebeb; }
   .footer__container {
     border-top: 1px solid black;
     text-align: center;
-    padding-top: 10px; }
+    padding-top: 1rem; }
+    @media only screen and (max-width: 37.5em) {
+      .footer__container {
+        padding-top: 1rem;
+        font-size: 1rem; } }
+  @media only screen and (max-width: 37.5em) {
+    .footer {
+      padding: 7rem 5% 1rem 5%; } }
