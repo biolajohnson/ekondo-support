@@ -34,6 +34,10 @@
 }
 
 .footer {
+  padding: 9rem 15% 4rem 15%;
+  margin-top: -10px;
+  background-color: rgb(241, 235, 235);
+
   &__container {
     border-top: 1px solid black;
     text-align: center;
@@ -42,13 +46,11 @@
     @include respond(phone) {
       padding-top: 1rem;
       font-size: 1rem;
+      padding-right: 2rem;
     }
   }
 
   @include respond(phone) {
-    padding: 7rem 5% 1rem 5%;
+    padding: 17rem 5% 1rem 5%;
   }
-  padding: 5rem 15% 4rem 15%;
-  margin-top: -10px;
-  background-color: rgb(241, 235, 235);
 }

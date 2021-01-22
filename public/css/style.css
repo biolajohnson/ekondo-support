@@ -355,7 +355,7 @@ body {
         font-size: 1rem; } }
 
 .footer {
-  padding: 5rem 15% 4rem 15%;
+  padding: 9rem 15% 4rem 15%;
   margin-top: -10px;
   background-color: #f1ebeb; }
   .footer__container {
@@ -365,7 +365,8 @@ body {
     @media only screen and (max-width: 37.5em) {
       .footer__container {
         padding-top: 1rem;
-        font-size: 1rem; } }
+        font-size: 1rem;
+        padding-right: 2rem; } }
   @media only screen and (max-width: 37.5em) {
     .footer {
-      padding: 7rem 5% 1rem 5%; } }
+      padding: 17rem 5% 1rem 5%; } }

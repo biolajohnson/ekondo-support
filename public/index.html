@@ -52,12 +52,13 @@
               We will send recommadations and tips via email.
                Enjoy being a plant parent 🙂
             </p>
-            <form autocomplete="off"  class="form" action="#">
+            <form autocomplete="off"  class="form" action="/help" enctype="multipart/form-data" method="POST">
               <div class="form__group">
                 <input
                   autofocus
                   placeholder="Name"
                   id="name"
+                  name="name"
                   type="text"
                   class="form-input"
                 />
@@ -67,17 +68,18 @@
                 <input
                   placeholder="Email address"
                   id="email"
+                  name="email"
                   type="email"
                   class="form-input"
                 />
               </div>
               <div class="form__group">
                 <div class="form-checkboxes">
-                  <label class="form-checkboxes-label"><input type="checkbox" id="dry_soil">Soil is dried out?</label>
+                  <label class="form-checkboxes-label"><input type="checkbox" name="dry_soil" id="dry_soil">Soil is dried out?</label>
                   
-                  <label class="form-checkboxes-label"><input type="checkbox" id="yellow_leaves">Plant leaves turning brown ir yellow?</label>
+                  <label class="form-checkboxes-label"><input type="checkbox" name="yellow_leaves" id="yellow_leaves">Plant leaves turning brown ir yellow?</label>
                   
-                  <label class="form-checkboxes-label"><input type="checkbox" id="holes_in_leaves">Holes in the leaves?</label>
+                  <label class="form-checkboxes-label"><input type="checkbox" name="holes_in_leaves" id="holes_in_leaves">Holes in the leaves?</label>
                   
                 </div>
               </div>
@@ -85,9 +87,14 @@
                 <textarea
                   placeholder="Tell us specifics if the checkbox options are not enough, really we want to know"
                   id="text"
+                  name="text"
                   type="compliants"
                   class="form-text"
                 ></textarea>
+              </div>
+              <div class="form__group">
+                <label class="form-checkboxes-label" for="image">Please send a photo of the plant</label>
+                <input type="file" id="image" multiple name="image">
               </div>
               <div class="form__group">
                 <input type="submit" class="form-submit" />
@@ -154,5 +161,5 @@
     </section>
     -->
   </body>
-  <script src="client.js"></script>
+  <!--<script src="client.js"></script> -->
 </html>

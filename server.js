@@ -1,7 +1,12 @@
 import express from "express";
 import dotenv from "dotenv";
-import Complaints from "./model.js";
+import Images from "./models/imagesModel.js";
 import connectDB from "./config.js";
+import multer from "multer";
+import path from "path";
+import pkg from "uuid";
+
+const { v4: uuid } = pkg;
 
 const app = express();
 dotenv.config();
@@ -11,32 +16,41 @@ const port = process.env.PORT;
 app.use(express.static("public"));
 app.use(express.json());
 
-app.post("/help", async (req, res) => {
-  const {
-    nameData,
-    emailData,
-    textData,
-    holesInLeavesData,
-    yellowLeavesData,
-    drySoilData,
-  } = req.body;
-  try {
-    const options = {
-      name: nameData,
-      email: emailData,
-      complaintText: textData,
-      drySoil: drySoilData,
-      holesInLeaves: holesInLeavesData,
-      yellowLeaves: yellowLeavesData,
-    };
-    const complaint = await new Complaints(options);
-    await complaint.save();
-    res.json(complaint);
-  } catch (e) {
-    console.error(e);
-    res.send(e);
-  }
-  console.log(req.body);
-  res.end();
+const storage = multer.diskStorage({
+  destination(req, file, cb) {
+    cb(null, "uploads");
+  },
+  filename(req, file, cb) {
+    const {
+      name,
+      email,
+      text,
+      dry_soil,
+      yellow_leaves,
+      holes_in_leaves,
+    } = req.body;
+    const { originalname } = file;
+    const ext = path.extname(originalname);
+    const id = uuid();
+    const filePath = `images/${id}${ext}`;
+    Images.create({
+      filePath,
+      name,
+      email,
+      text,
+      dry_soil,
+      yellow_leaves,
+      holes_in_leaves,
+    }).then(() => {
+      cb(null, filePath);
+    });
+  },
 });
+
+const upload = multer({ storage });
+
+app.post("/help", upload.array("image"), async (req, res) => {
+  res.redirect("/");
+});
+
 app.listen(port, () => console.log(`server is up on ${port}`));
