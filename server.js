@@ -14,6 +14,7 @@ connectDB();
 const port = process.env.PORT;
 
 app.use(express.static("public"));
+app.use(express.static("uploads"));
 app.use(express.json());
 
 const storage = multer.diskStorage({
@@ -38,9 +39,9 @@ const storage = multer.diskStorage({
       name,
       email,
       text,
-      dry_soil,
-      yellow_leaves,
-      holes_in_leaves,
+      drySoil: dry_soil,
+      yellowLeaves: yellow_leaves,
+      holesInLeaves: holes_in_leaves,
     }).then(() => {
       cb(null, filePath);
     });
@@ -51,6 +52,16 @@ const upload = multer({ storage });
 
 app.post("/help", upload.array("image"), async (req, res) => {
   res.redirect("/");
+});
+
+app.get("/support", async (req, res) => {
+  try {
+    const images = await Images.find({});
+    res.json(images);
+  } catch (e) {
+    console.error(e);
+    res.status(500).send(e);
+  }
 });
 
 app.listen(port, () => console.log(`server is up on ${port}`));

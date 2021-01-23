@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Support</title>
+  </head>
+  <body>
+    <div class="complaint">
+      <div class="complaint__card" id="comp">
+        <img class="complaint-image" src="/img/yellow.jpg" />
+        <h4>name</h4>
+        <h4>email</h4>
+        <div class="complaint-text">
+          <h4>Complaint:</h4>
+          <p></p>
+        </div>
+        <div class="complaint-conditions">
+          <ul class="complaint-conditions-list" id="the-list"></ul>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const loadImages = async () => {
+      const response = await fetch("http://localhost:4000/support");
+      const json = await response.json();
+      const complaintEle = document.querySelector("#comp").children;
+      console.log(complaintEle);
+      json.map((file) => {
+        complaintEle[1].textContent = file.name;
+        complaintEle[2].textContent = file.email;
+        complaintEle[0].src = file.filePath;
+        complaintEle[3].textContent = file.text;
+        let items = [file.yellowLeaves, file.holesInLeaves, file.drySoil],
+          ul = document.getElementById("the-list");
+
+        items.forEach(function (item) {
+          let li = document.createElement("li");
+          ul.appendChild(li);
+
+          li.textContent = item;
+        });
+      });
+    };
+    window.onload = loadImages;
+  </script>
+</html>

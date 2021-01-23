@@ -12,12 +12,6 @@ const imageSchema = new mongoose.Schema(
       type: String,
     },
 
-    images: [
-      {
-        type: String,
-      },
-    ],
-
     drySoil: {
       type: String,
     },

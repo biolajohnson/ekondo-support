@@ -9,6 +9,7 @@ const holesInLeaves = document.getElementById("holes_in_leaves");
 const yellowLeaves = document.getElementById("yellow_leaves");
 const drySoil = document.getElementById("dry_soil");
 
+/*
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   feedback.textContent = "Thank you";
@@ -16,11 +17,15 @@ form.addEventListener("submit", (e) => {
   drySoil.checked = false;
   yellowLeaves.checked = false;
   holesInLeaves.checked = false;
-  setTimeout(() => {
+  namedata.value = "";
+  email.value = "";
+  text.value = "";
+  image.value = "";
+  setTimeout(async () => {
     modal.style.display = "none";
-    namedata.value = "";
-    email.value = "";
-    text.value = "";
-    image.value = "";
+    const response = await fetch("/help");
+    const json = await response.json();
+    console.log(json);
   }, 3000);
 });
+*/

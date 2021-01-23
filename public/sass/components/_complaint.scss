@@ -1,0 +1,48 @@
+.complaint {
+  &__card {
+    border: 1px solid rgb(255, 255, 255);
+    box-shadow: 0 3rem 4rem rgba(black, 0.6);
+    padding: 1rem;
+    width: 35rem;
+    height: 50rem;
+    position: relative;
+    border-radius: 3px;
+    h4 {
+      z-index: 2000;
+    }
+  }
+  &-image {
+    position: absolute;
+    left: 0;
+    top: 6rem;
+    height: 25rem;
+    width: 100%;
+    padding: 0 0 2rem 0;
+    border-bottom: 0.3rem solid rgb(255, 175, 101);
+    display: block;
+  }
+  &-text {
+    position: absolute;
+    left: 0;
+    top: 32rem;
+    padding-left: 2rem;
+  }
+  &-conditions {
+    position: absolute;
+    left: 0;
+    bottom: 2rem;
+    &-list {
+      list-style: none;
+      float: right;
+      padding-left: 2rem;
+      & li {
+        text-transform: uppercase;
+        font-weight: 700;
+        display: inline;
+        &:not(:last-child) {
+          margin-right: 2rem;
+        }
+      }
+    }
+  }
+}
