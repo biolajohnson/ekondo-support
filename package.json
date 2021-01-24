@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "compile:sass": "node-sass public/sass/main.scss public/css/style.css -w",
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "start": "node server.js"
   },
   "author": "Abiola Johnson",
   "license": "ISC",
