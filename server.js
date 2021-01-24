@@ -16,10 +16,6 @@ const __dirname__ = path.resolve();
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("public"));
   app.use("/uploads", express.static(path.join(__dirname__, "/uploads")));
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname__, "public", "index.html"));
-  });
 }
 
 app.use(express.static("public"));
