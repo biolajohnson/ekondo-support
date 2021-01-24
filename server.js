@@ -12,6 +12,15 @@ const app = express();
 dotenv.config();
 connectDB();
 const port = process.env.PORT;
+const __dirname__ = path.resolve();
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("public"));
+  app.use("/uploads", express.static(path.join(__dirname__, "/uploads")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname__, "public", "index.html"));
+  });
+}
 
 app.use(express.static("public"));
 app.use(express.static("uploads"));
@@ -65,14 +74,5 @@ app.get("/support", async (req, res) => {
     res.status(500).send(e);
   }
 });
-const __dirname__ = path.resolve();
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("public"));
-  app.use("/uploads", express.static(path.join(__dirname__, "/uploads")));
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname__, "public", "index.html"));
-  });
-}
 
 app.listen(port, () => console.log(`server is up on ${port}`));
