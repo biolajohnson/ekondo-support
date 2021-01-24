@@ -22,36 +22,38 @@ const storage = multer.diskStorage({
     cb(null, "uploads");
   },
   filename(req, file, cb) {
-    const {
-      name,
-      email,
-      text,
-      dry_soil,
-      yellow_leaves,
-      holes_in_leaves,
-    } = req.body;
     const { originalname } = file;
-    const ext = path.extname(originalname);
     const id = uuid();
+    const ext = path.extname(originalname);
     const filePath = `images/${id}${ext}`;
-    Images.create({
-      filePath,
-      name,
-      email,
-      text,
-      drySoil: dry_soil,
-      yellowLeaves: yellow_leaves,
-      holesInLeaves: holes_in_leaves,
-    }).then(() => {
-      cb(null, filePath);
-    });
+    cb(null, filePath);
   },
 });
 
 const upload = multer({ storage });
 
 app.post("/help", upload.array("image"), async (req, res) => {
-  res.redirect("/");
+  console.log(req.files);
+  const {
+    name,
+    email,
+    text,
+    dry_soil,
+    yellow_leaves,
+    holes_in_leaves,
+  } = req.body;
+
+  await Images.create({
+    filePath: req.files[0].path,
+    name,
+    email,
+    text,
+    drySoil: dry_soil,
+    yellowLeaves: yellow_leaves,
+    holesInLeaves: holes_in_leaves,
+  });
+
+  res.send(`thanks! ${name}`);
 });
 
 app.get("/support", async (req, res) => {
