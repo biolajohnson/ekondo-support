@@ -1,12 +1,11 @@
 import mongoose from "mongoose";
 
-const imageSchema = new mongoose.Schema(
+const complaintSchema = new mongoose.Schema(
   {
-    name: {
-      type: String,
-    },
-    email: {
-      type: String,
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "user",
     },
     text: {
       type: String,
@@ -30,6 +29,6 @@ const imageSchema = new mongoose.Schema(
   }
 );
 
-const Images = mongoose.model("images", imageSchema);
+const Complaint = mongoose.model("complaint", complaintSchema);
 
-export default Images;
+export default Complaint;
