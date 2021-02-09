@@ -5,11 +5,11 @@ import {
   registerComplaint,
   updateComplaint,
 } from "../controllers/complaintController.js";
-import { admin } from "../middleware/authMiddleware.js";
+import { admin, protect } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-router.route("/").post(registerComplaint).get(admin, getAllComplaints);
-router.route("/:id").get(admin, getComplaint).put(updateComplaint);
+router.route("/").post(protect, registerComplaint).get(admin, getAllComplaints);
+router.route("/:id").put(protect, updateComplaint).get(admin, getComplaint);
 
 export default router;

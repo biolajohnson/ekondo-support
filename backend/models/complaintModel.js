@@ -9,16 +9,23 @@ const complaintSchema = new mongoose.Schema(
     },
     text: {
       type: String,
+      required: true,
     },
 
     drySoil: {
-      type: String,
+      type: Boolean,
+      required: true,
+      default: false,
     },
     yellowLeaves: {
-      type: String,
+      type: Boolean,
+      required: true,
+      default: false,
     },
     holesInLeaves: {
-      type: String,
+      type: Boolean,
+      required: true,
+      default: false,
     },
     filePath: {
       type: String,

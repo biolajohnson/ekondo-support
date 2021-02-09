@@ -2,21 +2,41 @@ import Complaint from "../models/complaintModel.js";
 import asyncHandler from "express-async-handler";
 
 export const registerComplaint = asyncHandler(async (req, res) => {
-  const { text, dry_soil, yellow_leaves, holes_in_leaves } = req.body;
-
   const complaint = new Complaint({
-    text,
-    dry_soil,
-    holes_in_leaves,
-    yellow_leaves,
-    image: "/img/sample.jpg",
+    user: req.user,
+    text: "",
+    drySoil: false,
+    holesInLeaves: false,
+    yellowLeaves: false,
+    filePath: "/images/sample.jpg",
   });
   if (complaint) {
     const newComplaint = await complaint.save();
     res.status(201).json(newComplaint);
   } else {
     res.status(400);
-    throw new Error("Invalid complaint data");
+    throw new Error("Something strange happened");
+  }
+});
+
+export const updateComplaint = asyncHandler(async (req, res) => {
+  const id = req.params.id;
+  const { text, drySoil, yellowLeaves, holesInLeaves, filePath } = req.body;
+
+  const foundComplaint = await Complaint.findById(id);
+
+  if (foundComplaint) {
+    foundComplaint.text = text;
+    foundComplaint.drySoil = drySoil;
+    foundComplaint.yellowLeaves = yellowLeaves;
+    foundComplaint.holesInLeaves = holesInLeaves;
+    foundComplaint.filePath = filePath;
+
+    const updatedFoundComplaint = await foundComplaint.save();
+    res.json(updatedFoundComplaint);
+  } else {
+    res.status(404);
+    throw new Error("Not found");
   }
 });
 
@@ -37,24 +57,5 @@ export const getAllComplaints = asyncHandler(async (req, res) => {
   } else {
     res.status(400);
     throw new Error("Complaints not found");
-  }
-});
-
-export const updateComplaint = asyncHandler(async (req, res) => {
-  const { text, dry_soil, yellow_leaves, holes_in_leaves, image } = req.body;
-
-  const complaint = await Complaint.find(req.params.id);
-  if (complaint) {
-    complaint.text = text;
-    complaint.dry_soil = dry_soil;
-    complaint.yellow_leaves = yellow_leaves;
-    complaint.image = image;
-    complaint.holes_in_leaves = holes_in_leaves;
-
-    const updatedComplaint = await complaint.save();
-    res.json(updatedComplaint);
-  } else {
-    res.status(400);
-    throw new Error("Something happened");
   }
 });

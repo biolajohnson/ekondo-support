@@ -7,7 +7,8 @@
   "scripts": {
     "compile:sass": "node-sass public/sass/main.scss frontend/src/App.css -w",
     "server": "nodemon backend/server.js",
-    "start": "node backend/server.js"
+    "client": "npm run start --prefix frontend",
+    "start": "concurrently \"npm run client\" \"npm run server\""
   },
   "author": "Abiola Johnson",
   "license": "ISC",
