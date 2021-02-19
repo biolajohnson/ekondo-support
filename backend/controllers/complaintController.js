@@ -59,3 +59,13 @@ export const getAllComplaints = asyncHandler(async (req, res) => {
     throw new Error("Complaints not found");
   }
 });
+
+export const deleteComplaint = asyncHandler(async (req, res) => {
+  const complaint = await Complaint.findByIdAndDelete(req.params.id);
+  if (complaint) {
+    res.status(200);
+  } else {
+    res.status(500);
+    throw new Error("Complaint not found");
+  }
+});

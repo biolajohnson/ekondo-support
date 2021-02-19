@@ -77,4 +77,15 @@ const updateUser = asyncHandler(async (req, res) => {
   }
 });
 
-export { getUserProfile, authUser, registerUser, updateUser };
+const getUserById = asyncHandler(async (req, res) => {
+  const user = await Users.findById(req.params.id);
+  if (user) {
+    res.status(200);
+    res.json(user);
+  } else {
+    res.status(400);
+    throw new Error("User not found");
+  }
+});
+
+export { getUserProfile, authUser, registerUser, updateUser, getUserById };

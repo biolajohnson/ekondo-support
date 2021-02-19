@@ -4,6 +4,7 @@ import Navigation from "./components/Navigation.js";
 import LoginScreen from "./screens/LoginScreen.js";
 import HomeScreen from "./screens/HomeScreen.js";
 import FormScreen from "./screens/FormScreen";
+import InfoScreen from "./screens/InfoScreen";
 import "./App.css";
 
 function App() {
@@ -12,8 +13,9 @@ function App() {
       <Navigation />
       <main>
         <Route path="/" component={HomeScreen} exact />
-        <Route path="/admin" component={LoginScreen} />
-        <Route path="/support" component={FormScreen} />
+        <Route path="/signin" component={LoginScreen} />
+        <Route path="/info" component={InfoScreen} />
+        <Route path="/support/:id" component={FormScreen} />
       </main>
     </Router>
   );
