@@ -14,7 +14,7 @@ const authUser = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(401);
-    throw new Error("You are not admin. Who are you?");
+    throw new Error("Unauthorized entry");
   }
 });
 

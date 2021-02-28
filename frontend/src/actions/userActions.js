@@ -42,18 +42,20 @@ export const registerUser = (email, name, password) => async (dispatch) => {
   }
 };
 
-export const LoginUser = (email, password) => async (dispatch) => {
+export const LoginUser = (email, password) => async (dispatch, getState) => {
   try {
     dispatch({
       type: LOGIN_REQUEST,
     });
+    const { userLogin } = getState();
     const config = {
       headers: {
         "Content-type": "application/json",
+        authorization: `Bearer ${userLogin}`,
       },
     };
     const { data } = await axios.post(
-      "/api/users",
+      "/api/users/login",
       { email, password },
       config
     );

@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navigation from "./components/Navigation.js";
 import LoginScreen from "./screens/LoginScreen.js";
 import HomeScreen from "./screens/HomeScreen.js";
@@ -13,7 +13,7 @@ function App() {
       <Navigation />
       <main>
         <Route path="/" component={HomeScreen} exact />
-        <Route path="/signin" component={LoginScreen} />
+        <Route path="/signup" component={LoginScreen} />
         <Route path="/info" component={InfoScreen} />
         <Route path="/support/:id" component={FormScreen} />
       </main>

@@ -1,0 +1,36 @@
+{
+  "pots": {
+    "designs": {
+      "edak": {
+        "waves": ["blue", "black", "brown", "pink"],
+        "stripes": "white",
+        "canvas": "multiple",
+        "color-palette": "multiple",
+        "african-patch": "multiple"
+      },
+      "chidi": {
+        "waves": ["blue", "black", "brown", "pink"],
+        "stripes": "white",
+        "canvas": "multiple",
+        "color-palette": "multiple",
+        "african-patch": "multiple"
+      },
+      "nelo": {
+        "canvas": "multiple",
+        "plain": ["white", "grey"],
+        "white-bottoms": ["purple"]
+      },
+      "ikoko": {
+        "plain": ["white", "grey"],
+        "white-bottoms": ["purple"]
+      }
+    },
+    "plants": ["spider", "rubber", "sanseveria", "snake", "cactus", "lace-aloe"]
+  },
+  "stationery-holder": {
+    "designs": {
+      "plain": ["grey", "white"],
+      "canvas": "multiple"
+    }
+  }
+}

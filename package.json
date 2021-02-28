@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "compile:sass": "node-sass public/sass/main.scss frontend/src/App.css -w",
+    "compile:sass": "node-sass sass/main.scss frontend/src/index.css -w",
     "server": "nodemon backend/server.js",
     "client": "npm run start --prefix frontend",
     "start": "concurrently \"npm run client\" \"npm run server\""
