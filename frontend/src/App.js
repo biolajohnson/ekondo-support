@@ -5,6 +5,7 @@ import LoginScreen from "./screens/LoginScreen.js";
 import HomeScreen from "./screens/HomeScreen.js";
 import FormScreen from "./screens/FormScreen";
 import InfoScreen from "./screens/InfoScreen";
+import DashboardScreen from "./screens/DashboardScreen";
 import "./App.css";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <Navigation />
       <main>
         <Route path="/" component={HomeScreen} exact />
+        <Route path="/dashboard" component={DashboardScreen} />
         <Route path="/signup" component={LoginScreen} />
         <Route path="/info" component={InfoScreen} />
         <Route path="/support/:id" component={FormScreen} />

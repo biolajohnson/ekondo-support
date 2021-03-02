@@ -8,6 +8,8 @@ import {
   GET_USER_FAILED,
   GET_USER_REQUEST,
   GET_USER_SUCCESS,
+  LOGOUT,
+  CLEAR_PROFILE,
 } from "../constants/userLoginConstants";
 import axios from "axios";
 
@@ -47,11 +49,10 @@ export const LoginUser = (email, password) => async (dispatch, getState) => {
     dispatch({
       type: LOGIN_REQUEST,
     });
-    const { userLogin } = getState();
+
     const config = {
       headers: {
         "Content-type": "application/json",
-        authorization: `Bearer ${userLogin}`,
       },
     };
     const { data } = await axios.post(
@@ -75,24 +76,26 @@ export const LoginUser = (email, password) => async (dispatch, getState) => {
   }
 };
 
-export const getUserDetails = (id) => async (dispatch, getState) => {
+export const getUserDetails = () => async (dispatch, getState) => {
+  console.log("Started");
   try {
     dispatch({
       type: GET_USER_REQUEST,
     });
-    const { authUser: userInfo } = getState();
+    const {
+      authUser: { userInfo },
+    } = getState();
+
     const config = {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
-        "Content-type": "application/json",
       },
     };
-    const { data } = await axios.get(`/api/users/${id}`, config);
+    const { data } = await axios.get(`/api/users/`, config);
     dispatch({
       type: GET_USER_SUCCESS,
       payload: data,
     });
-    localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (e) {
     dispatch({
       type: GET_USER_FAILED,
@@ -101,5 +104,19 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
           ? e.response.data.message
           : e.message,
     });
+  }
+};
+
+export const logout = () => async (dispatch) => {
+  localStorage.removeItem("userInfo");
+  try {
+    dispatch({
+      type: CLEAR_PROFILE,
+    });
+    dispatch({
+      type: LOGOUT,
+    });
+  } catch (e) {
+    console.log(e.message);
   }
 };

@@ -7,10 +7,12 @@ const authUser = asyncHandler(async (req, res) => {
   const user = await Users.findOne({ email });
   if (user && user.matchPassword(password)) {
     res.json({
+      id: user._id,
       email: user.email,
       password: user.password,
       isAdmin: user.isAdmin,
       token: generateToken(user._id),
+      name: user.name,
     });
   } else {
     res.status(401);

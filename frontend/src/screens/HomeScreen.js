@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 import { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { LoginUser } from "../actions/userActions";
 import Header from "../components/Header";
 
-const HomeScreen = ({ history }) => {
+const HomeScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
@@ -15,11 +16,10 @@ const HomeScreen = ({ history }) => {
     dispatch(LoginUser(email, password));
   };
 
-  useEffect(() => {
-    if (userInfo === null) {
-      history.push("/dashboard");
-    }
-  }, [userInfo, history]);
+  if (userInfo !== null) {
+    console.log(userInfo);
+    return <Redirect to={"/dashboard"} />;
+  }
   return (
     <Fragment>
       <div className="grid-container">

@@ -14,6 +14,6 @@ router.route("/").post(registerUser);
 router.route("/login").post(authUser);
 router.route("/:id").get(protect, getUserById).put(protect, updateUser);
 router.route("/admin/login").post(protect, admin, authUser);
-router.route("/admin").get(protect, admin, getUserProfile);
+router.route("/").get(protect, getUserProfile);
 
 export default router;
