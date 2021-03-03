@@ -2,6 +2,7 @@ import Users from "../models/usersModel.js";
 import asyncHandler from "express-async-handler";
 import generateToken from "../utils/generateToken.js";
 
+//authenticate user
 const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   const user = await Users.findOne({ email });
@@ -19,7 +20,7 @@ const authUser = asyncHandler(async (req, res) => {
     throw new Error("Unauthorized entry");
   }
 });
-
+// create or register new user
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
   const userExists = await Users.findOne({ email });
@@ -47,6 +48,7 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 });
 
+//get user's info after login
 const getUserProfile = asyncHandler(async (req, res) => {
   const user = await Users.findById(req.user._id);
   if (user) {
@@ -61,7 +63,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
     throw new Error("User not Found");
   }
 });
-
+//change user to have admin access
 const updateUser = asyncHandler(async (req, res) => {
   const { name, email, password, isAdmin } = req.body;
   const user = await Users.findById(req.params.id);
@@ -78,16 +80,33 @@ const updateUser = asyncHandler(async (req, res) => {
     throw new Error("User was not updated");
   }
 });
-
+//get user by the unique ID
 const getUserById = asyncHandler(async (req, res) => {
   const user = await Users.findById(req.params.id);
   if (user) {
-    res.status(200);
-    res.json(user);
+    res.status(200).json(user);
   } else {
     res.status(400);
     throw new Error("User not found");
   }
 });
 
-export { getUserProfile, authUser, registerUser, updateUser, getUserById };
+//get all the users
+const getAllUsers = asyncHandler(async (req, res) => {
+  const users = await Users.find({});
+  if (users) {
+    res.status(200).json(users);
+  } else {
+    res.status(400);
+    throw new Error("No user list found");
+  }
+});
+
+export {
+  getUserProfile,
+  authUser,
+  registerUser,
+  updateUser,
+  getUserById,
+  getAllUsers,
+};
