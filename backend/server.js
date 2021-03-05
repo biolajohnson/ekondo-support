@@ -15,7 +15,11 @@ const port = process.env.PORT;
 const __dirname__ = path.resolve();
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("public"));
-  app.use("/uploads", express.static(path.join(__dirname__, "/uploads")));
+  app.use(express.static(path.join(__dirname, "frontend", "build")));
+  app.get("/*", (req, res) => {
+    res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
+  });
+  app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 }
 
 app.use("/api/complaint", complaintRoutes);
