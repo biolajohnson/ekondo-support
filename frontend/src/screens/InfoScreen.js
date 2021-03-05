@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
 import { createComplaint } from "../actions/complaintsActions";
 
 const InfoScreen = ({ history }) => {
@@ -17,6 +18,7 @@ const InfoScreen = ({ history }) => {
 
   const registerHandler = () => {
     dispatch(createComplaint());
+    return <Redirect to={`/${id}/form`} />;
   };
   return (
     <>

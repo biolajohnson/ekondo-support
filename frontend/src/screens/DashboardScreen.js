@@ -7,25 +7,27 @@ import Spinner from "../components/Spinner";
 import PersonalData from "../components/PersonalData";
 import Footer from "../components/Footer";
 
-const DashboardScreen = () => {
-  const dispatch = useDispatch();
-  const { userInfo } = useSelector((state) => state.authUser);
+const DashboardScreen = ({ history }) => {
   const { loading } = useSelector((state) => state.getUserDetails);
+  const dispatch = useDispatch();
+  const {
+    userInfo: { id, name },
+  } = useSelector((state) => state.authUser);
 
   useEffect(() => {
-    if (userInfo) {
+    if (id) {
       dispatch(getUserDetails());
-      //console.log(profile);
     }
-  }, [dispatch, userInfo]);
+  }, [dispatch, id]);
 
   return loading ? (
     <Spinner />
   ) : (
     <div className="grid-container">
       <Header />
-      <InfoBlock />
-      <PersonalData />
+
+      <PersonalData name={name} />
+      <InfoBlock history={history} />
       <Footer />
     </div>
   );

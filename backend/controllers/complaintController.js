@@ -1,15 +1,18 @@
 import Complaint from "../models/complaintModel.js";
 import asyncHandler from "express-async-handler";
+import Users from "../models/usersModel.js";
 
 export const registerComplaint = asyncHandler(async (req, res) => {
   const complaint = new Complaint({
     user: req.user,
-    text: "",
+    plantName: "random",
+    text: "random",
     drySoil: false,
     holesInLeaves: false,
     yellowLeaves: false,
     filePath: "/images/sample.jpg",
   });
+  console.log(req.user);
   if (complaint) {
     const newComplaint = await complaint.save();
     res.status(201).json(newComplaint);
@@ -21,11 +24,19 @@ export const registerComplaint = asyncHandler(async (req, res) => {
 
 export const updateComplaint = asyncHandler(async (req, res) => {
   const id = req.params.id;
-  const { text, drySoil, yellowLeaves, holesInLeaves, filePath } = req.body;
+  const {
+    text,
+    drySoil,
+    yellowLeaves,
+    holesInLeaves,
+    filePath,
+    plantName,
+  } = req.body;
 
   const foundComplaint = await Complaint.findById(id);
 
   if (foundComplaint) {
+    foundComplaint.plantName = plantName;
     foundComplaint.text = text;
     foundComplaint.drySoil = drySoil;
     foundComplaint.yellowLeaves = yellowLeaves;

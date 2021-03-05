@@ -6,10 +6,14 @@ import {
   registerUserReducer,
   getUserDetailsReducer,
 } from "./reducers/userReducers";
-import { addComplaintReducer } from "./reducers/complaintReducer.js";
+import {
+  addComplaintReducer,
+  complaintDetailsReducer,
+} from "./reducers/complaintReducer.js";
 
 const reducer = combineReducers({
   addComplaint: addComplaintReducer,
+  getComplaint: complaintDetailsReducer,
   authUser: authUserReducer,
   registerUser: registerUserReducer,
   getUserDetails: getUserDetailsReducer,

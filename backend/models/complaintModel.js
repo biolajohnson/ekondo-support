@@ -7,11 +7,14 @@ const complaintSchema = new mongoose.Schema(
       required: true,
       ref: "user",
     },
+    plantName: {
+      type: String,
+      required: true,
+    },
     text: {
       type: String,
       required: true,
     },
-
     drySoil: {
       type: Boolean,
       required: true,

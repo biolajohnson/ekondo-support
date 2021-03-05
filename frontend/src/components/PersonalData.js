@@ -1,11 +1,9 @@
 import React from "react";
 
-const PersonalData = () => {
+const PersonalData = ({ name }) => {
   return (
-    <div>
-      <div class="personal-info">
-        <div>Personal data</div>
-      </div>
+    <div className="personal-info">
+      <p>{`Hello ${name}. Nice to have you on board! `}</p>
     </div>
   );
 };

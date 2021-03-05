@@ -1,15 +1,18 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createComplaint } from "../actions/complaintsActions";
 
-const InfoBlock = () => {
+const InfoBlock = ({ history }) => {
   const dispatch = useDispatch();
+  const { complaint } = useSelector((state) => state.addComplaint);
   const registerHandler = () => {
-    dispatch(createComplaint);
+    dispatch(createComplaint());
+    history.push(`/${complaint._id}/form`);
   };
+
   return (
-    <div>
-      <h1 className="display-4">Need some help?</h1>
+    <div className="main-content">
+      <h1>Need some help?</h1>
       <p>
         Tell us how your plant is doing so far! <br />
         We're excited to introduce a support system where by you can lay down

@@ -141,3 +141,81 @@ form {
   padding: 10px;
   font-size: 1.4em;
 }
+.personal-info {
+  grid-area: side-content;
+  background-color: #eee;
+  padding: 30px;
+  font-size: 1.5em;
+}
+.items-info {
+  grid-area: main-content;
+  background-color: rgba(16, 0, 233, 0.699);
+  position: relative;
+}
+.form-container {
+  position: relative;
+  height: 100vh;
+  background-image: radial-gradient(
+      rgba(158, 114, 73, 0.11),
+      rgba(11, 15, 26, 0.692)
+    ),
+    url(img/background-2.jpg);
+  background-size: cover;
+}
+.main-form {
+  background-color: rgba(248, 244, 240, 0);
+  position: absolute;
+  height: 600px;
+  width: 400px;
+  top: 40px;
+  left: 35%;
+  transform: translate(-50% -50%);
+  box-shadow: 1px 1px 3px black;
+  border-radius: 3px;
+}
+.form-container div {
+  padding: 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid grey;
+}
+.page-title {
+  color: #ff9966;
+}
+
+.input {
+  border-radius: 3px;
+  padding: 10px;
+  width: 92%;
+  border: none;
+  outline: none;
+  font-size: 1.1em;
+  color: rgba(11, 15, 26, 0.692);
+  font-size: 15px;
+}
+textarea {
+  resize: none;
+  width: 350px;
+  height: 80px;
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  padding: 10px;
+  font-size: 15px;
+  color: rgba(11, 15, 26, 0.692);
+}
+.checkbox {
+  padding-right: 10px;
+}
+.options-list {
+}
+.spinner_container {
+  position: relative;
+  height: 100vh;
+}
+.spinner_image {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+}

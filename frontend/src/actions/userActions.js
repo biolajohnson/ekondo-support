@@ -77,7 +77,6 @@ export const LoginUser = (email, password) => async (dispatch, getState) => {
 };
 
 export const getUserDetails = () => async (dispatch, getState) => {
-  console.log("Started");
   try {
     dispatch({
       type: GET_USER_REQUEST,
@@ -91,7 +90,7 @@ export const getUserDetails = () => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
-    const { data } = await axios.get(`/api/users/`, config);
+    const { data } = await axios.get(`/api/users/me`, config);
     dispatch({
       type: GET_USER_SUCCESS,
       payload: data,

@@ -17,7 +17,7 @@ export const addComplaintReducer = (state = {}, { payload, type }) => {
     case ADD_COMPLAINT_SUCCESS:
       return {
         loading: false,
-        complaint: payload.complaint,
+        complaint: payload,
       };
     case ADD_COMPLAINT_FAILED:
       return {
@@ -29,8 +29,8 @@ export const addComplaintReducer = (state = {}, { payload, type }) => {
   }
 };
 
-export const ComplaintDetailsReducer = (
-  state = { complaint: { complaintData: {} } },
+export const complaintDetailsReducer = (
+  state = { complaint: {} },
   { payload, type }
 ) => {
   switch (type) {
