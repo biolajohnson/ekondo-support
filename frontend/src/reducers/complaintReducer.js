@@ -7,12 +7,14 @@ import {
   GET_COMPLAINT_SUCCESS,
 } from "../constants/complaintsConstants.js";
 
-export const addComplaintReducer = (state = {}, { payload, type }) => {
+export const addComplaintReducer = (
+  state = { complaint: {} },
+  { payload, type }
+) => {
   switch (type) {
     case ADD_COMPLAINT_REQUEST:
       return {
         loading: true,
-        complaint: [],
       };
     case ADD_COMPLAINT_SUCCESS:
       return {

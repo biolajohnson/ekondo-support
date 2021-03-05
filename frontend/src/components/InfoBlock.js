@@ -7,8 +7,10 @@ const InfoBlock = ({ history }) => {
   const { complaint } = useSelector((state) => state.addComplaint);
   const registerHandler = () => {
     dispatch(createComplaint());
-    history.push(`/${complaint._id}/form`);
   };
+  if (complaint) {
+    history.push(`/${complaint._id}/form`);
+  }
 
   return (
     <div className="main-content">

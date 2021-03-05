@@ -25,8 +25,7 @@ const DashboardScreen = ({ history }) => {
   ) : (
     <div className="grid-container">
       <Header />
-
-      <PersonalData name={name} />
+      <PersonalData name={name} history={history} />
       <InfoBlock history={history} />
       <Footer />
     </div>

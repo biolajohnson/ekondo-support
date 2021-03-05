@@ -48,6 +48,8 @@ form {
   position: relative;
   margin-bottom: 30px;
   padding: 16px;
+  border-bottom: 1px solid black;
+  width: 100%;
 }
 .form-group input {
   width: 100%;
@@ -67,6 +69,7 @@ form {
   position: absolute;
   bottom: 0px;
   height: 2px;
+  left: -0.5px;
   width: 100%;
 }
 .form-group .underline:before {
@@ -80,7 +83,7 @@ form {
 }
 .form-group input:focus ~ .underline:before,
 .form-group input:valid ~ .underline:before {
-  transform: scaleX(1);
+  transform: scaleX(1) scaleY(2);
 }
 .form-group input:focus ~ label,
 .form-group input:valid ~ label {
@@ -107,7 +110,7 @@ form {
   background-image: radial-gradient(
       farthest-corner at 40px 40px,
       rgba(255, 189, 6, 0.137) 0%,
-      rgba(92, 92, 92, 0) 100%
+      rgba(48, 47, 47, 0.418) 100%
     ),
     url("img/rubber-plant.jpg");
 
@@ -130,6 +133,7 @@ form {
 }
 .link {
   text-decoration: none;
+  font-size: 1.2em;
 }
 .list {
   list-style: none;
@@ -206,8 +210,6 @@ textarea {
 .checkbox {
   padding-right: 10px;
 }
-.options-list {
-}
 .spinner_container {
   position: relative;
   height: 100vh;
@@ -218,4 +220,60 @@ textarea {
   top: 50%;
   transform: translate(-50%, -50%);
   width: 300px;
+}
+@media only screen and (max-width: 768px) {
+  .grid-container {
+    grid-template-areas:
+      "header header header header"
+      "main-content main-content main-content main-content"
+      "side-content side-content side-content side-content"
+      "footer footer footer footer";
+  }
+  .main-content {
+    border-bottom: 3px solid #ff9966;
+  }
+  .header {
+    height: 100vh;
+  }
+  .form-container {
+    height: 100vh;
+    position: relative;
+    width: 100%;
+    background-image: radial-gradient(
+        rgba(158, 114, 73, 0.11),
+        rgba(11, 15, 26, 0.692)
+      ),
+      url(img/background-2.jpg);
+    background-size: cover;
+  }
+  .main-form {
+    background-color: rgba(248, 244, 240, 0);
+    position: absolute;
+    left: 10%;
+    height: 80%;
+    width: 80%;
+    box-shadow: 1px 1px 3px black;
+    border-radius: 3px;
+  }
+  .form-container div {
+    padding: 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid grey;
+  }
+  .page-title {
+    color: #ff9966;
+    font-size: 1.8em;
+  }
+  textarea {
+    resize: none;
+    width: 200px;
+    height: 80px;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    padding: 10px;
+    font-size: 15px;
+    color: rgba(11, 15, 26, 0.692);
+    display: block;
+  }
 }

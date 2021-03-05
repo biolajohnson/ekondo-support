@@ -6,6 +6,7 @@ import {
 } from "../actions/complaintsActions.js";
 import axios from "axios";
 import Spinner from "../components/Spinner.js";
+import logo from "../img/white-logo.png";
 
 const ComplaintForm = () => {
   const [text, setText] = useState("");
@@ -64,6 +65,7 @@ const ComplaintForm = () => {
     <div className="form-container">
       <form onSubmit={submitHandler} className="main-form">
         <h1 className="page-title">Complaint form</h1>
+
         <div>
           <label>Name</label>
           <input className="input" readOnly value={name} />

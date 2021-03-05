@@ -39,12 +39,15 @@ const Login = () => {
           <div className="underline"></div>
         </div>
 
-        <input className="button" type="submit" value="Sign in " />
+        <input className="button" type="submit" value="Sign in" />
         <div>
-          Not a member?{" "}
-          <a className="link" href="/login">
-            {" "}
-            Sign up
+          <a
+            className="link"
+            href="https://www.experienceekondo.com"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Shop on Ekondo!
           </a>
         </div>
       </form>
