@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "compile:sass": "node-sass sass/main.scss frontend/src/index.css -w",
-    "server": "nodemon backend/server.js",
-    "prod": "node backend/server.js",
+    "server": "nodemon server.js",
+    "prod": "node server.js",
     "client": "npm run start --prefix frontend",
     "start": "concurrently \"npm run client\" \"npm run prod\""
   },
